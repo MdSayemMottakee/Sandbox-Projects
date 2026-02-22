@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" /> <!-- Character encoding for the document -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Responsive viewport settings -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Mottakee">
-    <title>Yes-No Quest</title> <!-- Title of the webpage -->
-    <link rel="stylesheet" href="./css/style.css" /> <!-- Linking external CSS file -->
-    <style>
-        body {
-            height: 100vh; /* Use viewport height to ensure full screen coverage */
-            margin: 0; /* Resetting default margin */
-            display: flex; /* Flex container for centering content */
-            justify-content: center; /* Horizontally centering content */
-            align-items: center; /* Vertically centering content */
-            background-image: url('./images/bg1.jpg'); /* Background image URL */
-            background-size: 100% auto; /* Maintain original image width and height */
-            background-position: center; /* Center the background image */
-            background-repeat: no-repeat; /* Prevent the background from repeating */
-        }
-    </style>
+    <title>Yes-No Quest</title>
+    <link rel="stylesheet" href="./css/style.css" />
 </head>
-<body>
-    <div class="container"> <!-- Main container for content -->
+<body class="state-quest">
+    <div class="container" id="main-container">
         <div class="banner-gif">
-            <img id="banner" src="./images/mid.gif" alt="banner" /> <!-- Banner GIF image -->
+            <img id="banner" src="./images/mid.gif" alt="banner" />
         </div>
-        <h1 id="question-heading">Do you love me?</h1> <!-- Question heading -->
-        <div class="buttons"> <!-- Container for buttons -->
-            <button id="yes-button"><p>Yes</p></button> <!-- Button for "Yes" -->
-            <button id="no-button"><p>No</p></button> <!-- Button for "No" -->
+        
+        <div id="quest-content">
+            <h1 id="question-heading">Do you love me?</h1>
+            <div class="buttons">
+                <button id="yes-button"><p>Yes</p></button>
+                <button id="no-button"><p>No</p></button>
+            </div>
+        </div>
+
+        <div id="success-content" style="display: none;">
+            <h2 id="success-message">Yepppie :3</h2>
         </div>
     </div>
-    <script src="./js/script.js"></script> <!-- Linking external JavaScript file -->
+
+    <!-- Anime.js for smooth transitions -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 </html>

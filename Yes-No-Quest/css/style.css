@@ -1,97 +1,129 @@
-/* Styling for buttons container */
-.buttons {
-    display: flex; /* Flex container */
-    justify-content: center; /* Center horizontally */
-    margin-top: 20px; /* Margin from the top */
-    flex-direction: row; /* Arrange items in a row */
-    align-items: end; /* Align items to the baseline */
-    flex-wrap: wrap; /* Allow wrapping of buttons if needed */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+
+:root {
+    --primary: #ff4d6d;
+    --secondary: #ff758f;
+    --success: #4ade80;
+    --bg-dark: #121212;
+    --text-light: #ffffff;
+    --glass: rgba(255, 255, 255, 0.1);
 }
 
-/* Styling for "No" button */
-#no-button {
-    margin: 0 10px; /* Margin */
-    color: white; /* Text color */
-    background-color: red; /* Background color */
-    height: 40px !important; /* Button height */
-    width: auto; /* Auto width */
-    border: none; /* Remove border */
-    cursor: pointer; /* Cursor style */
-    margin-top: 10px; /* Additional margin from the top */
-
-    /* Nested styling for paragraph inside button */
-    p {
-        margin: 0; /* Remove paragraph margin */
-        object-fit: contain; /* Adjust content to fit container */
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Styling for "Yes" button */
-#yes-button {
-    margin: 0 10px; /* Margin */
-    color: white; /* Text color */
-    border: none; /* Remove border */
-    background-color: green; /* Background color */
-    cursor: pointer; /* Cursor style */
-    height: 40px; /* Button height */
-
-    /* Nested styling for paragraph inside button */
-    p {
-        margin: 0; /* Remove paragraph margin */
-        object-fit: contain; /* Adjust content to fit container */
-    }
+body {
+    font-family: 'Outfit', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-light);
+    overflow: hidden;
+    transition: background 0.5s ease;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-/* Responsive styles for mobile */
-@media (max-width: 768px) {
-    body {
-        padding: 0 20px; /* Add padding to body */
-    }
-}
+/* State Backgrounds */
+body.state-quest { background-image: url('../images/bg1.jpg'); }
+body.state-fear { background-image: url('../images/bg1.jpg'); }
+body.state-success { background-image: url('../images/bg2.jpg'); }
 
-/* Styling for the main container */
 .container {
-    display: flex; /* Flex container */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    flex-direction: column; /* Arrange items in a column */
-    margin-top: 20px; /* Margin from the top */
-    padding: 20px; /* Padding */
-    text-align: center; /* Center align text */
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 90%;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Styling for message */
-.message {
-    display: none; /* Initially hidden */
+.banner-gif img {
+    height: 250px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-/* Styling for banner GIF */
-.banner-gif {
-    width: 100%; /* Full width */
-    height: auto; /* Maintain aspect ratio */
-    margin-top: 20px; /* Margin from the top */
-
-    /* Nested styling for images inside banner-gif */
-    img {
-        width: auto; /* Auto width */
-        height: 250px; /* Fixed height */
-    }
+h1, h2 {
+    margin-bottom: 24px;
+    font-weight: 600;
 }
 
-/* Styling for creator link */
-.creator {
-    text-decoration: none; /* Remove underline */
-    color: #333; /* Text color */
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    min-height: 60px;
+}
 
-    /* Styling for visited link */
-    &:visited {
-        text-decoration: none; /* Remove underline */
-        color: #333; /* Text color */
-    }
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    /* Hover effect */
-    &:hover {
-        text-decoration: underline; /* Underline on hover */
-        color: #555; /* Text color */
-    }
+button p { margin: 0; }
+
+#yes-button {
+    background: var(--success);
+    color: #1a1a1a;
+    width: 100px;
+    height: 50px;
+    box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);
+}
+
+#yes-button:hover {
+    transform: scale(1.05);
+    background: #64ff9c;
+}
+
+#no-button {
+    background: var(--primary);
+    color: white;
+    padding: 0 24px;
+    height: 50px;
+    box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
+}
+
+#no-button:hover {
+    transform: scale(1.05);
+    background: var(--secondary);
+}
+
+/* State Transitions */
+.state-fear #no-button {
+    position: absolute;
+    z-index: 100;
+}
+
+.state-success .container {
+    border-color: var(--success);
+}
+
+#success-message {
+    color: var(--success);
+    font-size: 2.5rem;
+    text-shadow: 0 0 20px rgba(74, 222, 128, 0.5);
+}
+
+@media (max-width: 600px) {
+    .container { padding: 24px; }
+    .banner-gif img { height: 180px; }
 }
