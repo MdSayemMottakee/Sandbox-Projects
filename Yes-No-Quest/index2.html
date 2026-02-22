@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <!-- Setting character encoding -->
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"> <!-- Responsive viewport settings -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Specifies the version of Internet Explorer to use -->
+    <meta name="HandheldFriendly" content="true"> <!-- Indicates the page is optimized for handheld devices -->
+    <meta name="format-detection" content="telephone=no"> <!-- Prevents automatic detection of phone numbers -->
+    <meta name="author" content="Mottakee">
+
+    <title>Yes-No Quest</title> <!-- Title of the webpage -->
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css"  href="css/main.css" /> <!-- Linking external CSS file -->
+    <style>
+        body {
+            height: 100vh; /* Use viewport height to ensure full screen coverage */
+            margin: 0; /* Resetting default margin */
+            display: flex; /* Flex container for centering content */
+            justify-content: center; /* Horizontally centering content */
+            align-items: center; /* Vertically centering content */
+            background-image: url('./images/bg1.jpg'); /* Background image URL */
+            background-size: 100% auto; /* Maintain original image width and height */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat; /* Prevent the background from repeating */
+        }
+    </style>
+</head>
+<body>
+    <div class="container"> <!-- Main container for content -->
+        <div class="banner-gif">
+            <img id="banner" src="./images/fear.gif" alt="banner" /> <!-- Banner GIF image -->
+        </div>
+        <h1 id="question-heading">Do you love me?</h1> <!-- Question heading -->
+        <div class="buttons"> <!-- Container for buttons -->
+            <button id="yes-button"><p>Yes</p></button> <!-- Button for "Yes" -->
+            <button id='no-button'><p>No &#128516;</p></button> <!-- Button for "No" with a smiley -->
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="js/main.js"></script> <!-- Linking external JavaScript file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.js"></script> <!-- Linking Anime.js library -->
+</body>  
+</html>

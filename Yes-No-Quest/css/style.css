@@ -1,0 +1,97 @@
+/* Styling for buttons container */
+.buttons {
+    display: flex; /* Flex container */
+    justify-content: center; /* Center horizontally */
+    margin-top: 20px; /* Margin from the top */
+    flex-direction: row; /* Arrange items in a row */
+    align-items: end; /* Align items to the baseline */
+    flex-wrap: wrap; /* Allow wrapping of buttons if needed */
+}
+
+/* Styling for "No" button */
+#no-button {
+    margin: 0 10px; /* Margin */
+    color: white; /* Text color */
+    background-color: red; /* Background color */
+    height: 40px !important; /* Button height */
+    width: auto; /* Auto width */
+    border: none; /* Remove border */
+    cursor: pointer; /* Cursor style */
+    margin-top: 10px; /* Additional margin from the top */
+
+    /* Nested styling for paragraph inside button */
+    p {
+        margin: 0; /* Remove paragraph margin */
+        object-fit: contain; /* Adjust content to fit container */
+    }
+}
+
+/* Styling for "Yes" button */
+#yes-button {
+    margin: 0 10px; /* Margin */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    background-color: green; /* Background color */
+    cursor: pointer; /* Cursor style */
+    height: 40px; /* Button height */
+
+    /* Nested styling for paragraph inside button */
+    p {
+        margin: 0; /* Remove paragraph margin */
+        object-fit: contain; /* Adjust content to fit container */
+    }
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 768px) {
+    body {
+        padding: 0 20px; /* Add padding to body */
+    }
+}
+
+/* Styling for the main container */
+.container {
+    display: flex; /* Flex container */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    flex-direction: column; /* Arrange items in a column */
+    margin-top: 20px; /* Margin from the top */
+    padding: 20px; /* Padding */
+    text-align: center; /* Center align text */
+}
+
+/* Styling for message */
+.message {
+    display: none; /* Initially hidden */
+}
+
+/* Styling for banner GIF */
+.banner-gif {
+    width: 100%; /* Full width */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: 20px; /* Margin from the top */
+
+    /* Nested styling for images inside banner-gif */
+    img {
+        width: auto; /* Auto width */
+        height: 250px; /* Fixed height */
+    }
+}
+
+/* Styling for creator link */
+.creator {
+    text-decoration: none; /* Remove underline */
+    color: #333; /* Text color */
+
+    /* Styling for visited link */
+    &:visited {
+        text-decoration: none; /* Remove underline */
+        color: #333; /* Text color */
+    }
+
+    /* Hover effect */
+    &:hover {
+        text-decoration: underline; /* Underline on hover */
+        color: #555; /* Text color */
+    }
+}

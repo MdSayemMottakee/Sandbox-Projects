@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" /> <!-- Character encoding for the document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Responsive viewport settings -->
+    <meta name="author" content="Mottakee">
+    <title>Yes-No Quest</title> <!-- Title of the webpage -->
+    <link rel="stylesheet" href="./css/style.css" /> <!-- Linking external CSS file -->
+    <style>
+        body {
+            height: 100vh; /* Use viewport height to ensure full screen coverage */
+            margin: 0; /* Resetting default margin */
+            display: flex; /* Flex container for centering content */
+            justify-content: center; /* Horizontally centering content */
+            align-items: center; /* Vertically centering content */
+            background-image: url('./images/bg1.jpg'); /* Background image URL */
+            background-size: 100% auto; /* Maintain original image width and height */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat; /* Prevent the background from repeating */
+        }
+    </style>
+</head>
+<body>
+    <div class="container"> <!-- Main container for content -->
+        <div class="banner-gif">
+            <img id="banner" src="./images/mid.gif" alt="banner" /> <!-- Banner GIF image -->
+        </div>
+        <h1 id="question-heading">Do you love me?</h1> <!-- Question heading -->
+        <div class="buttons"> <!-- Container for buttons -->
+            <button id="yes-button"><p>Yes</p></button> <!-- Button for "Yes" -->
+            <button id="no-button"><p>No</p></button> <!-- Button for "No" -->
+        </div>
+    </div>
+    <script src="./js/script.js"></script> <!-- Linking external JavaScript file -->
+</body>
+</html>

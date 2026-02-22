@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correct Answer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: white;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        .gif-container img {
+            width: 200px;
+            height: auto;
+            display: block;
+            margin: 10px auto;
+        }
+
+        h1 {
+            font-size: 50px;
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0px 0px 10px green;
+            color: green;
+            margin: 20px auto;
+            padding: 10px;
+            border: 3px solid black;
+            display: inline-block;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        p {
+            font-size: 22px;
+            font-weight: bold;
+            color: black;
+        }
+
+        .play-again {
+            font-size: 22px;
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+            animation: floatUp 1.5s infinite alternate ease-in-out;
+        }
+
+        .play-again:hover {
+            background-color: darkgreen;
+            transform: scale(1.1);
+        }
+
+        @keyframes balloonUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-150px); opacity: 0; }
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: red;
+            opacity: 0.7;
+            animation: fall 3s linear;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100vh) rotate(0); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="gif-container">
+        <img src="correct.gif" alt="Correct Answer">
+    </div>
+
+    <h1>✅ Your Answer is Correct! ✅</h1>
+    <p>Thank you for playing!</p>
+
+    <div class="gif-container">
+        <img src="thanks.gif" alt="Thank You">
+    </div>
+
+    <button id="playButton" class="play-again" onclick="balloonEffect()">🎈 Play Again?</button>
+
+    <script>
+        function createConfetti() {
+            const colors = ['red', 'blue', 'yellow', 'green', 'purple', 'orange'];
+            for (let i = 0; i < 50; i++) {
+                let confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                document.body.appendChild(confetti);
+
+                setTimeout(() => { confetti.remove(); }, 5000);
+            }
+        }
+
+        let confettiInterval = setInterval(createConfetti, 500);
+        setTimeout(() => { clearInterval(confettiInterval); }, 5000);
+
+        function balloonEffect() {
+            let button = document.getElementById("playButton");
+            button.style.animation = "balloonUp 2s forwards";
+            setTimeout(() => { window.location.href = 'Random-question.html'; }, 2000);
+        }
+    </script>
+
+</body>
+</html>

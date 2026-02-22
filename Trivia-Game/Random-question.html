@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia Game</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            background: url('bg1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 75px;
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+            -webkit-text-stroke: 5px black; /* Black border for readability */
+            color: white;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 5px solid black; /* Added border for emphasis */
+            display: inline-block;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.6); /* Slightly transparent background */
+        }
+
+        #gif-container {
+            margin-bottom: 20px;
+        }
+
+        #ques-gif {
+            width: 150px;
+            height: auto;
+        }
+
+        #question-container {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        #question {
+            font-size: 30px; /* Increased size */
+            font-weight: bold;
+            color: white;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .option {
+            display: block;
+            margin: 10px auto;
+            padding: 12px;
+            font-size: 20px;
+            cursor: pointer;
+            border: 2px solid #fff;
+            width: 80%;
+            max-width: 320px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: black;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .option:hover {
+            background-color: #ffcc00;
+            transform: scale(1.1);
+        }
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 40px;
+            -webkit-text-stroke: 3px black;
+            padding: 5px;
+            border: 3px solid black;
+        }
+
+        #question {
+            font-size: 22px;
+            padding: 10px;
+        }
+
+        .option {
+            font-size: 18px;
+            padding: 15px;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        #ques-gif {
+            width: 100px;
+        }
+
+        #question-container {
+            width: 90%;
+            padding: 15px;
+        }
+    }
+
+    </style>
+    <link rel="preload" href="bg1.jpg" as="image">
+
+</head>
+<body>
+
+    <h1>✨ Trivia Game ✨</h1>
+
+    <div id="gif-container">
+        <img id="ques-gif" src="ques.gif" alt="Question">
+    </div>
+
+    <div id="question-container">
+        <p id="question"></p>
+        <div id="options"></div>
+    </div>
+
+    <script>
+        // List of questions with multiple-choice answers
+        const questions = [
+            { question: "What is the largest planet in our solar system?", options: ["Earth", "Saturn", "Jupiter", "Neptune"], answer: "Jupiter" },
+            { question: "Which planet is known as the 'Red Planet'?", options: ["Venus", "Mars", "Mercury", "Jupiter"], answer: "Mars" },
+            { question: "Who was the first human to travel into space?", options: ["Neil Armstrong", "Buzz Aldrin", "Yuri Gagarin", "John Glenn"], answer: "Yuri Gagarin" },
+            { question: "What is the name of the first artificial satellite launched into space?", options: ["Explorer 1", "Sputnik 1", "Apollo 11", "Voyager 1"], answer: "Sputnik 1" },
+            { question: "Which galaxy is Earth located in?", options: ["Andromeda", "Sombrero", "Milky Way", "Whirlpool"], answer: "Milky Way" },
+            { question: "What force keeps planets in orbit around the Sun?", options: ["Magnetism", "Gravity", "Friction", "Nuclear force"], answer: "Gravity" },
+            { question: "Which planet has the most extensive ring system?", options: ["Jupiter", "Uranus", "Neptune", "Saturn"], answer: "Saturn" },
+            { question: "What is the Sun primarily made of?", options: ["Oxygen and nitrogen", "Iron and nickel", "Hydrogen and helium", "Carbon and silicon"], answer: "Hydrogen and helium" },
+            { question: "What is a light-year?", options: ["A measure of brightness", "A measure of distance", "A measure of time", "A measure of speed"], answer: "A measure of distance" },
+            { question: "What is the name of NASA’s most famous space telescope?", options: ["Kepler", "Hubble", "Chandra", "James Webb"], answer: "Hubble" },
+            { question: "Which planet has the fastest orbit around the Sun?", options: ["Earth", "Mercury", "Mars", "Venus"], answer: "Mercury" },
+            { question: "What is the name of the largest volcano in the solar system?", options: ["Mount Everest", "Olympus Mons", "Mauna Loa", "Vesuvius"], answer: "Olympus Mons" },
+            { question: "How long does it take for light from the Sun to reach Earth?", options: ["8 seconds", "8 minutes", "8 hours", "8 days"], answer: "8 minutes" },
+            { question: "What was the first manned mission to land on the Moon?", options: ["Apollo 10", "Apollo 11", "Apollo 12", "Apollo 13"], answer: "Apollo 11" },
+            { question: "What celestial event occurs when the Moon passes directly between the Earth and the Sun?", options: ["Lunar eclipse", "Solar eclipse", "Supernova", "Aurora"], answer: "Solar eclipse" },
+            { question: "What type of galaxy is the Milky Way?", options: ["Elliptical", "Spiral", "Irregular", "Lenticular"], answer: "Spiral" },
+            { question: "What is the name of the region beyond Neptune filled with icy bodies?", options: ["Asteroid Belt", "Kuiper Belt", "Oort Cloud", "Exoplanet Zone"], answer: "Kuiper Belt" },
+            { question: "Which space probe was the first to leave the solar system?", options: ["Voyager 1", "Voyager 2", "Pioneer 10", "New Horizons"], answer: "Voyager 1" },
+            { question: "What is a black hole?", options: ["A collapsed star with strong gravity", "A massive asteroid", "A dense planet", "A region with no matter"], answer: "A collapsed star with strong gravity" },
+            { question: "Which planet has the strongest winds in the solar system?", options: ["Jupiter", "Saturn", "Neptune", "Uranus"], answer: "Neptune" },
+            { question: "How many moons does Mars have?", options: ["1", "2", "4", "5"], answer: "2" },
+            { question: "What is the name of the closest star to Earth after the Sun?", options: ["Sirius", "Proxima Centauri", "Betelgeuse", "Vega"], answer: "Proxima Centauri" },
+            { question: "What is the name of the boundary where the Sun's influence ends?", options: ["Kuiper Belt", "Oort Cloud", "Heliopause", "Magnetosphere"], answer: "Heliopause" },
+            { question: "What is the name of the first reusable spacecraft?", options: ["Soyuz", "Space Shuttle", "Apollo", "Skylab"], answer: "Space Shuttle" },
+            { question: "What is the name of the largest moon in the solar system?", options: ["Titan", "Ganymede", "Europa", "Triton"], answer: "Ganymede" }
+        ];
+
+        // Pick a random question
+        const randomIndex = Math.floor(Math.random() * questions.length);
+        const currentQuestion = questions[randomIndex];
+        document.getElementById("question").textContent = currentQuestion.question;
+
+        // Display answer options
+        const optionsContainer = document.getElementById("options");
+        currentQuestion.options.forEach(option => {
+            const btn = document.createElement("button");
+            btn.textContent = option;
+            btn.className = "option";
+            btn.onclick = () => checkAnswer(option, currentQuestion.answer);
+            optionsContainer.appendChild(btn);
+        });
+
+        // Answer checking function
+        function checkAnswer(selected, correct) {
+            if (selected === correct) {
+                window.location.href = "correct.html";
+            } else {
+                window.location.href = "wrong.html";
+            }
+        }
+    </script>
+
+</body>
+</html>

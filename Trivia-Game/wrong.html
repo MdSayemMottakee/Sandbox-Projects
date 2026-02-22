@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wrong Answer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(251, 249, 249);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 50px;
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0px 0px 10px red;
+            color: red;
+            margin: 20px 0;
+            padding: 10px;
+            border: 2px solid red; /* 2px border around the text */
+            -webkit-text-stroke: 1px black;
+            display: inline-block;
+            border-radius: 10px;
+        }
+
+        #gif-container {
+            margin-bottom: 20px;
+        }
+
+        #wrong-gif {
+            width: 200px;
+            height: auto;
+        }
+
+        .play-again {
+            font-size: 22px;
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .play-again:hover {
+            background-color: darkred;
+            transform: scale(1.1);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="gif-container">
+        <img id="wrong-gif" src="wrong.gif" alt="Wrong Answer">
+    </div>
+
+    <h1>❌ Your Answer is Wrong! ❌</h1>
+
+    <button class="play-again" onclick="location.href='Random-question.html'">🔄 Play Again?</button>
+
+</body>
+</html>
